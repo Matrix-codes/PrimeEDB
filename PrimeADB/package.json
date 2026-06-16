@@ -1,0 +1,38 @@
+{
+  "name": "primeadb",
+  "version": "1.0.0",
+  "description": "Professional Android Device Management Tool",
+  "main": "src/main/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "build": "electron-builder",
+    "pack": "electron-builder --dir"
+  },
+  "keywords": ["android", "adb", "fastboot", "device-management"],
+  "author": "PrimeADB",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.6.4"
+  },
+  "build": {
+    "appId": "com.primeadb.app",
+    "productName": "PrimeADB",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "src/assets/icons/icon.ico"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "src/assets/icons/icon.icns"
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "src/assets/icons/icon.png"
+    }
+  }
+}

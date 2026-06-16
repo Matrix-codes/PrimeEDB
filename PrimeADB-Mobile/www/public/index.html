@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#08090D" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>PrimeADB</title>
+  <meta name="description" content="Professional Android device management tool." />
+
+  <!-- ── Premium Fonts (Multilingual) ────────────────────────────────── -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- ── Design System Styles ─────────────────────────────────────────── -->
+  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="styles/animations.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/sidebar.css" />
+  <link rel="stylesheet" href="styles/rtl.css" />
+
+  <!-- ── Mobile Overrides (MUST load after base styles) ──────────────── -->
+  <link rel="stylesheet" href="styles/mobile.css" />
+</head>
+<body>
+  <!-- ── App API Bridge ────────────────────────────────────────────────── -->
+  <script src="utils/api.js"></script>
+
+  <!-- ── i18n Engine (loads before UI) ────────────────────────────────── -->
+  <script src="utils/i18n.js"></script>
+
+  <div id="app">
+
+    <!-- ── Mobile Top Bar (replaces Electron titlebar) ──────────────── -->
+    <div id="mobile-topbar">
+      <div class="mobile-topbar-brand">
+        <div class="mobile-topbar-logo">🤖</div>
+        <span class="mobile-topbar-name">PrimeADB</span>
+      </div>
+      <div class="mobile-topbar-status">
+        <span class="status-dot" id="tb-status-dot" style="background:var(--text-muted);"></span>
+        <span id="tb-device-count">Loading...</span>
+      </div>
+    </div>
+
+    <!-- ── Legacy sidebar (hidden on mobile via mobile.css) ──────────── -->
+    <div id="sidebar"></div>
+
+    <!-- ── Main Content ──────────────────────────────────────────────── -->
+    <main id="main-content"></main>
+
+    <!-- ── Bottom Navigation Bar ─────────────────────────────────────── -->
+    <nav id="bottom-nav">
+      <button class="bottom-nav-item active" data-page="dashboard" id="bn-dashboard">
+        <span class="bottom-nav-icon">📊</span>
+        <span class="bottom-nav-label" data-i18n="nav.dashboard">Dashboard</span>
+      </button>
+      <button class="bottom-nav-item" data-page="adb-tools" id="bn-adb-tools">
+        <span class="bottom-nav-icon">🔧</span>
+        <span class="bottom-nav-label" data-i18n="nav.adb_tools">ADB</span>
+      </button>
+      <button class="bottom-nav-item" data-page="terminal" id="bn-terminal">
+        <span class="bottom-nav-icon">💻</span>
+        <span class="bottom-nav-label" data-i18n="nav.terminal">Terminal</span>
+      </button>
+      <button class="bottom-nav-item" data-page="wireless" id="bn-wireless">
+        <span class="bottom-nav-icon">📡</span>
+        <span class="bottom-nav-label" data-i18n="nav.wireless">Wireless</span>
+      </button>
+      <button class="bottom-nav-item" data-page="settings" id="bn-settings">
+        <span class="bottom-nav-icon">⚙️</span>
+        <span class="bottom-nav-label" data-i18n="nav.settings">Settings</span>
+      </button>
+    </nav>
+
+  </div><!-- #app -->
+
+  <!-- ── Components ──────────────────────────────────────────────────── -->
+  <script src="components/toast.js"></script>
+  <script src="components/modal.js"></script>
+  <script src="components/loading.js"></script>
+  <script src="components/sidebar.js"></script>
+
+  <!-- ── Utilities ───────────────────────────────────────────────────── -->
+  <script src="utils/store.js"></script>
+
+  <!-- ── Pages ───────────────────────────────────────────────────────── -->
+  <script src="pages/dashboard.js"></script>
+  <script src="pages/adb-tools.js"></script>
+  <script src="pages/fastboot.js"></script>
+  <script src="pages/file-manager.js"></script>
+  <script src="pages/logcat.js"></script>
+  <script src="pages/terminal.js"></script>
+  <script src="pages/wireless.js"></script>
+  <script src="pages/settings.js"></script>
+  <script src="pages/language.js"></script>
+
+  <!-- ── App Router & Mobile Navigation ─────────────────────────────── -->
+  <script src="renderer.js"></script>
+
+</body>
+</html>
